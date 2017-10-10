@@ -73,7 +73,7 @@ void *producer_function(void *foo){
 		new_item.wait = getRandNum(2,9);
 		
 		//print new item info
-		printf("Producing item: number = %d\n", new_item.number);
+		printf("Producing item: number = %d", new_item.number);
 		printf(", wait = %d\n", new_item.wait);
 		
 		//if consumer is at max
@@ -124,7 +124,7 @@ void *consumer_function(void *foo){
 		//CoNsUmEeeee
 		consume_item = buffer.items[index_consumer];
 		sleep(consume_item.wait);
-		printf("Producing item: number = %d", consume_item.number);
+		printf("Consuming item: number = %d\n", consume_item.number);
 		//printf(", wait = %d\n", consume_item.wait);
 		
 		index_consumer++;
