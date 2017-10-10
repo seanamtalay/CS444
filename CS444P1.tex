@@ -116,7 +116,14 @@ file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -local
 \end{itemize}
 \newpage
 
-\section*{Concerrency} \\
+\section*{Concerrency} 
+\textbf{SOLUTION}
+
+The main solution to this concurrency problem is to create producer and consumer in a way that they can tell each other that the items are ready to be consumed or need to be produced. For this, we can use threads functions to allow them to communicate. Also, the buffer will be in a form of a struck since it allows us to store more than one data in one unit. The more detailed steps that we did to solve this problem can be found under question number two.\\
+
+
+
+\textbf{QUESTIONS}
 
 1.	What do you think the main point of this assignment is?
 
