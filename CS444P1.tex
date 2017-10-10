@@ -61,4 +61,23 @@
    The purpose of this assignment is to build our first kernel and understand the steps to run it from the OS2 server. In order to refresh parallel programming we also complete a concurrency exercise using pthreads.
 \end{titlepage}
 
+Concerrency \\
+
+1.	What do you think the main point of this assignment is?
+
+The main point of this assignment is to let us review the material from Operating System I class. Since the major part of this assignment is to manipulate threads, it requires us to look back to what we learned in OS I class and apply it to this assignment.\\
+
+2.	How did you personally approach the problem? Design decisions, algorithm, etc.
+
+First of all, we tried to understand the problem and then came up with a rough algorithm to help us design the program. Then, we looked up how the mt19937ar.c file functions. After we knew roughly what we should do, we did some research by looking at OS I course materials and some quick google search about multi threads programing and ASM in C language.  Then we started coding by making a struct for the buffer and main function first, then we carefully built the producer function. Using the producer function as a guide, we successfully coded the consumer function. Then we got back to the main function and filled everything in the way that consumer and producer supposed to interact.\\
+
+3.	How did you ensure your solution was correct? Testing details, for instance.
+
+Since our program has print statements for every actions consumer and producer do, it was not that hard for us to track the results and test our program. We did a number of tests by using different amount of items. For each test, we checked if the interactions between producer and consumer were correct or not.\\
+
+4.	What did you learn?
+
+We got a chance to refresh our memory about multi threads programing in C. In addition, we also learn something new like how to use ASM in C language and the Mersenne Twister. Last but not least, we also learn how to use LaTex to create this document.\\
+
+
 \end{document}
