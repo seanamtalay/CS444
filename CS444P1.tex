@@ -31,7 +31,7 @@
 \def\name{Dakota Zaengle}
 
 %pull in the necessary preamble matter for pygments output
-\input{pygments.tex}
+%\input{pygments.tex}
 
 %% The following metadata will show up in the PDF properties
 % \hypersetup{
@@ -52,16 +52,71 @@
 \begin{titlepage}
    \centering
    \vspace*{\baselineskip}
-   {\LARGE CS444 Project 1}
+   {\LARGE CS444 Project 1 Group 36}
    \vspace{2\baselineskip}
-   {\scshape\Large Namtalay Laorattanavech \\ Dakota Zaengle \\}
+   {\scshape\Large \\ Namtalay Laorattanavech \\ Dakota Zaengle \\}
    \vspace{2\baselineskip}
+   
    Abstract
+   
    \vspace{0.5\baselineskip}
    The purpose of this assignment is to build our first kernel and understand the steps to run it from the OS2 server. In order to refresh parallel programming we also complete a concurrency exercise using pthreads.
 \end{titlepage}
 
-Concerrency \\
+\section*{Building the Kernel}
+
+\textbf{FIRST PUTTY SESSION}
+
+\begin{enumerate}
+\item cd /scratch/fall2017
+\item mkdir 36
+\item cd 36
+\item git clone git://git.yoctoproject.org/linux-yocto-3.19
+\item git checkout v3.19.2
+\item cp /scratch/files/bzImage-quemux86.bin bzImage-quemux86.bin
+\item cp /scratch/files/core-image-lsb-sdk-quemux86.ext4 core-image-lsb-sdk-quemux86.ext4
+\item source /scratch/files/environment-setup-i586-poky-linux.csh
+\item make j4 -all
+\item qemu-system-i386 -gdb tcp::5536 -S -nographic -kernel bzImage-qemux86.bin -drive
+file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime
+--no-reboot --append ‘‘root=/dev/vda rw console=ttyS0 debug’’.
+\end{enumerate}
+
+\textbf{START NEW PUTTY SESSION}
+\begin{enumerate}
+\item source /scratch/files/environment-setup-i586-poky-linux.csh
+\item gdb
+\item target remote localhost:5536
+\item continue
+\end{enumerate}
+
+\textbf{BACK TO FIRST PUTTY SESSION}
+\begin{enumerate}
+\item root
+\item uname -r
+\end{enumerate}
+
+\newpage
+
+\section*{Qemu Flag Definitions}
+
+\begin{itemize}
+\item qemu-system-i386: Starts Qemu
+\item -gdb tcp::5536: Waits for a connection from gdb on port 5536 to start
+\item -S: Pauses and waits for continue command on startup
+\item -nographic: Causes Qemu to be run through the command line
+\item -kernel bzImage-qemux86.bin: Tells Qemu what kernel image to use
+\item -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio: Defines a new disk drive, virtio means it will use the virtio architecture to set up a virtual drive
+\item -enable-kvm: Turns on the Kernel-based Virtual Machine enabling full virtualization.
+\item -net none: Sets network options to ’none’, overriding the default
+\item -usb: Enables USB to be passed through to qemu
+\item -localtime: lets the RTC start at the current local time
+\item –no-reboot: Exit instead of rebooting
+\item –append “root=/dev/vda rw console=ttyS0 debug”.: Use cmdline as kernel command line, gives command line arguments
+\end{itemize}
+\newpage
+
+\section*{Concerrency} \\
 
 1.	What do you think the main point of this assignment is?
 
@@ -78,6 +133,16 @@ Since our program has print statements for every actions consumer and producer d
 4.	What did you learn?
 
 We got a chance to refresh our memory about multi threads programing in C. In addition, we also learn something new like how to use ASM in C language and the Mersenne Twister. Last but not least, we also learn how to use LaTex to create this document.\\
+
+\newpage
+
+\section*{Work Log}
+\begin{tabular}{l|l|l}
+10/6/17 & Dakota Zaengle & Built Kernel \\
+10/6/17 & Namtalay Laorattanavech & Wrote Concurrency \\
+10/8/17 & Both & Reviewed both parts of project and started writeup \\
+10/9/17 & Both & Finished writeup \\
+\end{tabular}
 
 
 \end{document}
