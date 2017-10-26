@@ -28,7 +28,7 @@
 %\usepackage{hyperref}
 
 %Template by D. Kevin McGrath 
-\def\name{Dakota Zaengle}
+\def\name{Namtalay Laorattanavech}
 
 %pull in the necessary preamble matter for pygments output
 %\input{pygments.tex}
@@ -52,51 +52,17 @@
 \begin{titlepage}
    \centering
    \vspace*{\baselineskip}
-   {\LARGE CS444 Project 1 Group 36}
+   {\LARGE CS461 Senior Capstone Assignment 1 }
    \vspace{2\baselineskip}
-   {\scshape\Large \\ Namtalay Laorattanavech \\ Dakota Zaengle \\}
+   {\scshape\Large \\ Namtalay Laorattanavech  \\}
    \vspace{2\baselineskip}
    
-   Abstract
-   
-   \vspace{0.5\baselineskip}
-   The purpose of this assignment is to build our first kernel and understand the steps to run it from the OS2 server. In order to refresh parallel programming we also complete a concurrency exercise using pthreads.
+  
 \end{titlepage}
 
-\section*{Building the Kernel}
+\section*{Abstract}
 
-\textbf{FIRST PUTTY SESSION}
-
-\begin{enumerate}
-\item cd /scratch/fall2017
-\item mkdir 36
-\item cd 36
-\item git clone git://git.yoctoproject.org/linux-yocto-3.19
-\item git checkout v3.19.2
-\item cp /scratch/files/bzImage-quemux86.bin bzImage-quemux86.bin
-\item cp /scratch/files/core-image-lsb-sdk-quemux86.ext4 core-image-lsb-sdk-quemux86.ext4
-\item source /scratch/files/environment-setup-i586-poky-linux.csh
-\item make j4 -all
-\item qemu-system-i386 -gdb tcp::5536 -S -nographic -kernel bzImage-qemux86.bin -drive
-file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime
---no-reboot --append ‘‘root=/dev/vda rw console=ttyS0 debug’’.
-\end{enumerate}
-
-\textbf{START NEW PUTTY SESSION}
-\begin{enumerate}
-\item source /scratch/files/environment-setup-i586-poky-linux.csh
-\item gdb
-\item target remote localhost:5536
-\item continue
-\end{enumerate}
-
-\textbf{BACK TO FIRST PUTTY SESSION}
-\begin{enumerate}
-\item root
-\item uname -r
-\end{enumerate}
-
-\newpage
+RPM is a wearable device that captures user’s movement in a form of movement data. It gives the information about specific motions of wrist, arm, and lower body. The objective of this project is to come up with a smart phone application that can use that data to inform the user his or her movement and try to improve that movement relative to the selected sport. [More details will be added after meeting with the client.\\
 
 \section*{Qemu Flag Definitions}
 
